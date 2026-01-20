@@ -1,0 +1,10 @@
+body { font-family: 'Georgia', serif; line-height:1.6; margin:0; padding:0; background:#fff; color:#333; }
+header, footer { text-align:center; padding:10px; background:#f8f8f8; }
+a { color:#b54; text-decoration:none; }
+a:hover { text-decoration:underline; }
+ul { list-style:none; padding:0; }
+ul li { margin:5px 0; }
+button { cursor:pointer; padding:5px 10px; border:none; background:#b54; color:#fff; border-radius:5px; }
+body.dark-mode { background:#1e1e1e; color:#f0f0f0; }
+body.dark-mode header, body.dark-mode footer { background:#333; color:#f0f0f0; }
+body.dark-mode a { color:#ffa0c0; }
