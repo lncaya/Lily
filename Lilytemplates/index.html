@@ -1,0 +1,59 @@
+lily_clone/
+│
+├─ app.py                 # Flask backend
+├─ templates/             # HTML template
+│   ├─ index.html
+│   ├─ novel.html
+│   ├─ manga.html
+│   └─ upload.html
+├─ static/
+│   ├─ style.css
+│   └─ uploads/           # Folder untuk menyimpan file novel & gambar manga
+└─ data/
+    └─ daftar-bab.json    # JSON untuk daftar bab/chapter
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Novella & Manga</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+<h1>📖 My Novella & Manga Library</h1>
+<button id="toggle-dark">🌓 Dark Mode</button>
+<a href="{{ url_for('upload') }}">➕ Upload Bab/Chapter</a>
+</header>
+
+<main>
+<h2>Novella</h2>
+<ul>
+{% for item in data['novel'] %}
+<li><a href="{{ url_for('novel', filename=item['file'].split('/')[-1]) }}">{{ item['title'] }}</a></li>
+{% endfor %}
+</ul>
+
+<h2>Manga</h2>
+<ul>
+{% for item in data['manga'] %}
+<li><a href="{{ url_for('manga', filename=item['file'].split('/')[-1]) }}">{{ item['title'] }}</a></li>
+{% endfor %}
+</ul>
+</main>
+
+<footer>© 2026 My Web Novel & Manga</footer>
+
+<script>
+const toggle = document.getElementById('toggle-dark');
+toggle.onclick = () => {
+document.body.classList.toggle('dark-mode');
+localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+};
+if(localStorage.getItem('darkMode')==='true'){document.body.classList.add('dark-mode');}
+</script>
+</body>
+</html>
+
+
