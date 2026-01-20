@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ filename }}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+<h1>{{ filename }}</h1>
+<a href="{{ url_for('index') }}">← Kembali ke Library</a>
+<button id="toggle-dark">🌓 Dark Mode</button>
+</header>
+
+<article>
+{% with open('static/uploads/' + filename, 'r', encoding='utf-8') as f %}
+{% set content = f.read() %}
+{{ content | safe }}
+{% endwith %}
+</article>
+
+<script>
+const toggle = document.getElementById('toggle-dark');
+toggle.onclick = () => {
+document.body.classList.toggle('dark-mode');
+localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+};
+if(localStorage.getItem('darkMode')==='true'){document.body.classList.add('dark-mode');}
+</script>
+</body>
+</html>
+
