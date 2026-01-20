@@ -1,1 +1,14 @@
+lily_clone/
+│
+├─ app.py                 # Flask backend
+├─ templates/             # HTML template
+│   ├─ index.html
+│   ├─ novel.html
+│   ├─ manga.html
+│   └─ upload.html
+├─ static/
+│   ├─ style.css
+│   └─ uploads/           # Folder untuk menyimpan file novel & gambar manga
+└─ data/
+    └─ daftar-bab.json    # JSON untuk daftar bab/chapter
 
